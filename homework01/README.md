@@ -7,4 +7,4 @@ The second script uses the name module to print out five names of exactly nine c
 generate a name and then a nested while loop that would keep generating a name until it was nine charecters or less. 
 
 The third script puts five names into a list and then uses a fucntion to to count the amount of charecters in each name. This script puts five names into a list and then
-the function takes in a name and then returns its length after subtracting one charecter accounting for the space and then prints the name and the length of the name. 
+the function takes in a name and then returns its length after subtracting one charecter accounting for the space and then prints the name and the length of the name.
