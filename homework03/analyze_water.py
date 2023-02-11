@@ -18,7 +18,8 @@ def turbidity(calibration_constant: float, detector_current: float) -> float:
 
 def decay(current_turb: float, threshold: float, decay_factor: float) -> float: 
     """
-    Calcualtes the amount of time it takes for the water to reach a safe point by taking in three floats and then putting them into a modified version of the exponential decay function 
+    Calcualtes the amount of time it takes for the water to reach a safe point by taking in three floats and then putting them into a modified version of the 
+    exponential decay function 
 
     Args: 
         current_turb (float): The average turbidity of the most recent 5 data points
