@@ -40,7 +40,7 @@ def main():
     total = 0 
     NTU = 1.0 
     total_time = 0 
-    decay_factor = 0.2
+    decay_factor = 0.02
     for row in list(reversed(data['turbidity_data'])):  
         total += turbidity(row['calibration_constant'],row['detector_current'])
         i = i + 1 
