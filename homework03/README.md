@@ -43,7 +43,7 @@ If the test_analyze_water runs correctly it should look like this.
 
 ![image](https://user-images.githubusercontent.com/122917623/218228636-2cef434d-214c-411f-8d48-be68564a2aff.png)
 
-#### Interpretation 
+### Interpretation 
 To interpret this output from the images: the first line for the analyze_water script will
 always tell you the turbidity of the water in NTU. The next line will tell you the if the water is safe or not to use. The final line will tell you the amount of time 
 it will take to be safe to use. If the turbidity is already lower than the threshold it will tell you say 0 hours because it is already safe. The last image shows the
