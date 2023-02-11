@@ -26,8 +26,8 @@ def decay(current_turb: float, threshold: float, decay_factor: float) -> float:
         threshold (float): The turbitity threshold for safe water
         decay_factor (float): The decay factor per hour 
 
-        Returns: 
-            time (float): The amount of time the water takes to get to a safer turbidity 
+    Returns: 
+        time (float): The amount of time the water takes to get to a safer turbidity 
     """
     time = (math.log(threshold/current_turb))/(math.log(1-decay_factor)) 
     return round(time,2) 
