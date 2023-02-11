@@ -11,8 +11,8 @@ def test_turbidity():
          
 
 def test_decay():
-        assert decay(1.5,1.0,0.2) == 1.82
-        assert decay(2.3,1.0,0.2) == 3.73
-        assert decay(8.1,1.0,0.2) == 9.37
+        assert decay(1.5,1.0,0.02) == 20.07
+        assert decay(2.3,1.0,0.02) == 41.23
+        assert decay(8.1,1.0,0.02) == 103.54
         assert isinstance(decay(1.9,1,0.2), float) == True
         
