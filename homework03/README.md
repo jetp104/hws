@@ -37,7 +37,7 @@ If anaylze_water runs correctly it should look like this if the water is under t
 
 and like this if it is above the turbidity threshold. 
 
-![image](https://user-images.githubusercontent.com/122917623/218228546-ba74630c-2c98-4a1a-a0ab-d0dde8531828.png)
+![image](https://user-images.githubusercontent.com/122917623/218230160-aa79d579-23c1-4b4e-bc31-f8c6ab8f2d79.png)
 
 If the test_analyze_water runs correctly it should look like this. 
 
