@@ -14,5 +14,5 @@ def test_decay():
         assert decay(1.5,1.0,0.02) == 20.07
         assert decay(2.3,1.0,0.02) == 41.23
         assert decay(8.1,1.0,0.02) == 103.54
-        assert isinstance(decay(1.9,1,0.2), float) == True
+        assert isinstance(decay(1.9,1,0.02), float) == True
         
