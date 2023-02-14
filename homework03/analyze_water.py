@@ -51,10 +51,10 @@ def main():
 
     print(f"Average turbidity based on most recent five measurements = {average:.4} NTU")  
     if average < NTU: 
-        print("Info: Turbidity is below threshold for safe us")
+        print("Info: Turbidity is below threshold for safe use")
         print("Minimum time required to return below a safe threshold = 0 hours") 
     else:  
-        print("Warning: Turbidity is above threshold for safe us")
+        print("Warning: Turbidity is above threshold for safe use")
         total_time = decay(average,NTU,decay_factor) 
         print(f"Minimum time required to return below a safe threshold = {total_time:.2} hours") 
 
