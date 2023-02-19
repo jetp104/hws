@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET']) 
-def data(): 
+def data() -> dict:  
     """
     Gets the ISS Trajectory data from the NASA website. 
 
@@ -29,7 +29,7 @@ def data():
         return Error
 
 @app.route('/keys', methods=['GET'])
-def keys():
+def keys() -> list:   
     """
     Goes thrrough all the keys in the data set to find which one epochs is under. 
 
@@ -62,7 +62,7 @@ def keys():
     return list7
 
 @app.route('/epochs', methods=['GET']) 
-def epochs(): 
+def epochs() -> dict:  
     """
     Returns the epochs in the dictionary and every value assoicated with the epochs.
 
@@ -76,8 +76,8 @@ def epochs():
     epochs_data = keys()  
     return epochs_data
 
-@app.route('/epochs/<epoch>', methods=['GET'])
-def an_epoch(epoch):
+@app.route('/epochs/<string:epoch>', methods=['GET'])
+def an_epoch(epoch: list) -> list:
     """
     This function returns a single epoch from the list of epochs
 
@@ -101,8 +101,8 @@ def an_epoch(epoch):
         error = "Data Not Found \n" 
         return error 
 
-@app.route('/epochs/<epoch>/speed', methods=['GET'])
-def speed(epoch):
+@app.route('/epochs/<string:epoch>/speed', methods=['GET'])
+def speed(epoch: list) -> str:
     """
     This function calculates the instantaneous speed of the epoch by squaring each x_dot,y_dot,z_dot 
     respectively adding them toghether and then taking the square root of the total.
@@ -123,4 +123,7 @@ def speed(epoch):
 
     speed = math.sqrt(x_dot**2+y_dot**2+z_dot**2) 
     awnser = f'The speed for this epoch is: {speed} \n'
-    return awnser   
+    return awnser  
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
