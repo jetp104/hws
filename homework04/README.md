@@ -18,8 +18,8 @@ iss_tracker.py: This app has multiple paths included inside it that can be run.
 <br> path (/keys): returns the list of keys associated with another key. Used only to find the 
 <br> epochs data. 
 <br> path (/epochs): This path returns the list of all the epochs in the data set
-<br> path (/epochs/"<epoch>"): This path returns a specific epoch using its assigned id 
-<br> path (/epochs/"<epoch>"/speed: This path returns the insantaneous speed of the specified epoch
+<br> path (/epochs/"<<epoch>>"): This path returns a specific epoch using its assigned id 
+<br> path (/epochs/"<<epoch>>"/speed: This path returns the insantaneous speed of the specified epoch
 
 ## Instructions to Run the App
 To run the application use the 
