@@ -6,13 +6,21 @@ To access the xml file used for the app visit this link that will take you to th
 
 ## Scripts
 iss_tracker.py: This app has multiple paths included inside it that can be run.
+<br>
 path (/): This path returns the entire data set
-path (/keys)turns the list of keys associated with another key. Used only to find the
-epochs data.
+<br>
+path (/keys): Turns the list of keys associated with another key. Used only to find the epochs data.
+<br>
 path (/epochs): This path returns the list of all the epochs in the data set
+<br>
+path (/epochs?limt=int&offset=int): This path returns modified list of Epochs given query parameters
+<br>
 path (/epochs/"epoch_id"): This path returns a specific epoch using its assigned id
+<br>
 path (/epochs/"epoch_id"/speed: This path returns the insantaneous speed of the specified epoch
+<br>
 path (/delete-data): This path deletes the entire data set
+<br> 
 path (/post-data): This path reloads the dictionary object with data from the web
 
 Dockerfile: A text file the contains everything needed to run the iss_tracker Docker image from the container. 
@@ -39,7 +47,7 @@ and it shows this
 ![image](https://user-images.githubusercontent.com/122917623/221445327-b1568523-fb31-4b27-a99a-3021088d1ba6.png)
 
 ## Running Flask 
-If the image is built properly your termianl will end up looking like this once you do the docker run command: 
+If the image is built properly your terminal will end up looking like this once you do the docker run command: 
 
 ![image](https://user-images.githubusercontent.com/122917623/221445496-6b4d4ded-8c43-4e4e-81de-6d2f2b348baf.png)
 
