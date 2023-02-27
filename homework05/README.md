@@ -1,75 +1,108 @@
-# Flask Application that Takes the ISS Data Set and Finds the Instananeous Velocity
-The purpose of this project was to read in the ISS data from an xml link. Using the link I
-had to find the data associated with the epochs. Then using that data with the epochs I
-created a path to a single epoch. Once the single epoch was returned I calculated the
-instantaneous velocity using the x_dot, y_dot, and z_dot value in the data set.
+# Undone (The Sweater Container)
+The purpose of this project was to add onto homework04. In homework04 The purpose of the project was to read in the ISS data from an xml link. Using the link I had to find the data associated with the epochs. Then using that data with the epochs I created a path to a single epoch. Once the single epoch was returned I calculated the instantaneous velocity using the x_dot, y_dot, and z_dot value in the data set. In this homework there is 3 added routes with 2 of them using completley new methods "DELETE" and "POST." Within this project aswell I used defensive coding to bar the user from crashing the program using bad inputs. 
 
-## How to Access the Data Used for the Flask App 
-To access the xml file used for the app visit this link that will take you to the NASA
-website.
-https://spotthestation.nasa.gov/trajectory_data.cfm
-Once there scroll down and choose the xml link which will take you to the data set. The data 
-set we use has the ids of the epochs, each epochs x, y, and z location, and it's speeds in the
-x, y, and z direction. 
+## How to Access the Data Used for the Flask App
+To access the xml file used for the app visit this link that will take you to the NASA website. https://spotthestation.nasa.gov/trajectory_data.cfm Once there scroll down and choose the xml link which will take you to the data set. The data set we use has the ids of the epochs, each epochs x, y, and z location, and it's speeds in the x, y, and z direction.
 
-## Description of Flask App 
+## Scripts
 iss_tracker.py: This app has multiple paths included inside it that can be run.
-<br> path (/): This path returns the entire data set
-<br> path (/keys): returns the list of keys associated with another key. Used only to find the 
-<br> epochs data. 
-<br> path (/epochs): This path returns the list of all the epochs in the data set
-<br> path (/epochs/"epoch_id"): This path returns a specific epoch using its assigned id 
-<br> path (/epochs/"epoch_id"/speed: This path returns the insantaneous speed of the specified epoch
+path (/): This path returns the entire data set
+path (/keys)turns the list of keys associated with another key. Used only to find the
+epochs data.
+path (/epochs): This path returns the list of all the epochs in the data set
+path (/epochs/"epoch_id"): This path returns a specific epoch using its assigned id
+path (/epochs/"epoch_id"/speed: This path returns the insantaneous speed of the specified epoch
+path (/delete-data): This path deletes the entire data set
+path (/post-data): This path reloads the dictionary object with data from the web
 
-## Instructions to Run the App
-To run the application use the 
-  
-``` 
-  flask --app iss_tracker --debug run
+Dockerfile: A text file the contains everything needed to run the iss_tracker Docker image from the container. 
+
+## Instructions 
+To use the existing docker image use the commands in this order: 
 ```
-In another terminal run the command <br> 
-for the first path 
+docker pull jetp104/iss_tracker:1.0
+```
+```
+docker run -it --rm -p 5000:5000 jetp104/iss_tracker:1.0
+```
+To build a new image from the docker file use the command: 
+```
+docker build -t jetp104/iss_tracker:1.0 .
+```
+You will know the docker image sucessfuly built if you use the command: 
+```
+docker images
+```
+
+and it shows this 
+
+![image](https://user-images.githubusercontent.com/122917623/221445327-b1568523-fb31-4b27-a99a-3021088d1ba6.png)
+
+## Running Flask 
+If the image is built properly your termianl will end up looking like this once you do the docker run command: 
+
+![image](https://user-images.githubusercontent.com/122917623/221445496-6b4d4ded-8c43-4e4e-81de-6d2f2b348baf.png)
+
+The routes can be run using these commands: 
+
  ```
   curl localhost:5000/
  ```
-  <br>for the second path  
+ 
+ which will output like this: 
+ ![image](https://user-images.githubusercontent.com/122917623/221445650-0affeeec-cc4b-45da-b0fd-a471022ffa03.png)
+ 
   ```
-  curl localhost:5000/epochs/
+  curl localhost:5000/epochs
   ```
-  for the third path  
+  
+  which will output like this: 
+  
+  ![image](https://user-images.githubusercontent.com/122917623/221445749-24dc1647-ec8b-4f38-be9c-d15df475154b.png)
+  
   ```
   curl localhost:5000/epochs/"2023-048T18:40:00.000Z"
   ``` 
-  for the fourth path 
+  
+  which will output like this: 
+  
+  ![image](https://user-images.githubusercontent.com/122917623/221445811-be03421e-8b0f-4a5f-81c8-8618143759a5.png)
+
+
   ```
   curl localhost:5000/epochs/"2023-048T18:40:00.000Z"/speed
   ``` 
-  for the fifth path
+  
+  which will output like this: 
+  
+  ![image](https://user-images.githubusercontent.com/122917623/221445869-b92c1ca8-3d44-4592-974c-f9d3cc253a07.png)
+
+
   ```
   curl localhost:5000/keys
   ```
- ## Examples 
- The first path will return you the entire data set. It will be done running when the last
-  thing appears as 
-  ![image](https://user-images.githubusercontent.com/122917623/219977884-7fe8ffa2-4024-4768-98f0-d882e412ad01.png)
+  
+  which will output like this: 
+  
+  ![image](https://user-images.githubusercontent.com/122917623/221445971-0c2ad98a-2531-44f3-8cc6-75cdf0e3ae53.png)
 
-  The second path will give you a large dictionary of epochs and there z, y, z, x_dot, 
-  y_dot, and z_dot values associated. 
+  The command for the next two paths only return strings but influence the data: 
   
-  The third path if ran correctly should return the specific epoch that was searched for 
-  including its data which looks like this 
-  ![image](https://user-images.githubusercontent.com/122917623/219978073-ea4ed4cc-23a6-4215-ae2d-dab5467698ef.png)
+  the first command is for /delete-data which will produce a string that says "Deleted" 
   
-  The fourth path will just return a string with the speed of the epoch calculated from the 
-  equation speed = sqrt(x_dot^2 + y_dot^2 + z_dot^2) which looks like this 
+  ```
+   curl -X DELETE localhost:5000/delete-data
+  ```
   
-  ![image](https://user-images.githubusercontent.com/122917623/219978156-d8bd369c-52c6-41d3-a335-20cc4414ff84.png)
-
-  The fifth path with the final list should look like the second path
+  the next command is for /post-data which will produce a string that says "data posted" 
+  ```
+  curl -X POST localhost:5000/post-data
+  ```
   
-  ## Interpretation of results
-  The first path just return a list of dictionaries and all the values included with each key. 
-  The second path returns every epoch in the data set 
-  The third path will return the epcific epoch id that was specified in the path 
-  The fourth path will return the instantaneous speed calculated from the specific epoch indicated earlier in the path. 
-  The fifth path depending on which list you return will give you the keys associated with that dictionary. 
+  ### Query Paramaters 
+  The /epochs route has 2 query paramaters associated with it. The offset parameter (chooses a starting point for the epochs) and the limit parameter (limits the        amount of epochs that show up in the list. An example of this command would be: 
+  ```
+  curl 'localhost:5000/epochs?limit=10&offset=500'
+  ```
+  This command will display 10 epochs starting from epoch number 500. 
+  
