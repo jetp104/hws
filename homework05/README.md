@@ -33,9 +33,11 @@ docker pull jetp104/iss_tracker:1.0
 ```
 docker run -it --rm -p 5000:5000 jetp104/iss_tracker:1.0
 ```
+Make sure you are in the same repository as the iss_tracker.py file when you pull from docker
+
 To build a new image from the docker file use the command: 
 ```
-docker build -t jetp104/iss_tracker:1.0 .
+docker build -t <your_username>/iss_tracker:1.0 .
 ```
 You will know the docker image sucessfuly built if you use the command: 
 ```
