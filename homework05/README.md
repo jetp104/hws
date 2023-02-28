@@ -55,6 +55,10 @@ If the image is built properly your terminal will end up looking like this once 
 
 ![image](https://user-images.githubusercontent.com/122917623/221445496-6b4d4ded-8c43-4e4e-81de-6d2f2b348baf.png)
 
+To Curl these commands use: 
+```
+curl localhost:5000
+```
 The routes can be run using these commands: 
 
  ```
