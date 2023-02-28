@@ -33,7 +33,7 @@ To use the existing docker image use the commands in this order:
 docker pull jetp104/iss_tracker:hw05
 ```
 ```
-docker run jetp104/iss_tracker:hw05
+docker run -it --rm -p 5000:5000 jetp104/iss_tracker:hw05
 ```
 Make sure you are in the same repository as the iss_tracker.py file when you pull from docker
 
