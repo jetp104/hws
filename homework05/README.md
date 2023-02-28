@@ -31,7 +31,7 @@ To use the existing docker image use the commands in this order:
 docker pull jetp104/iss_tracker:1.0
 ```
 ```
-docker run -it --rm -p 5000:5000 jetp104/iss_tracker:1.0
+docker run jetp104/iss_tracker:1.0
 ```
 Make sure you are in the same repository as the iss_tracker.py file when you pull from docker
 
@@ -58,18 +58,20 @@ The routes can be run using these commands:
  ```
   curl localhost:5000/
  ```
- 
  which will output like this: 
  ![image](https://user-images.githubusercontent.com/122917623/221445650-0affeeec-cc4b-45da-b0fd-a471022ffa03.png)
+ 
+  Interpretation: The list of all the data inside the xml file. 
  
   ```
   curl localhost:5000/epochs
   ```
-  
+ 
   which will output like this: 
   
   ![image](https://user-images.githubusercontent.com/122917623/221445749-24dc1647-ec8b-4f38-be9c-d15df475154b.png)
   
+  Interpretation: The list of all the epoch id's 
   ```
   curl localhost:5000/epochs/"2023-048T18:40:00.000Z"
   ``` 
@@ -79,6 +81,7 @@ The routes can be run using these commands:
   ![image](https://user-images.githubusercontent.com/122917623/221445811-be03421e-8b0f-4a5f-81c8-8618143759a5.png)
 
 
+  Interpretation: The data associated with the specific epoch id
   ```
   curl localhost:5000/epochs/"2023-048T18:40:00.000Z"/speed
   ``` 
@@ -87,7 +90,7 @@ The routes can be run using these commands:
   
   ![image](https://user-images.githubusercontent.com/122917623/221445869-b92c1ca8-3d44-4592-974c-f9d3cc253a07.png)
 
-
+  Interpretation: The speed of the specific epoch id 
   ```
   curl localhost:5000/keys
   ```
@@ -95,6 +98,8 @@ The routes can be run using these commands:
   which will output like this: 
   
   ![image](https://user-images.githubusercontent.com/122917623/221445971-0c2ad98a-2531-44f3-8cc6-75cdf0e3ae53.png)
+  
+  Interpration: The keys and list associated with the xml file. 
 
   The command for the next two paths only return strings but influence the data: 
   
