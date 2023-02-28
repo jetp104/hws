@@ -1,4 +1,6 @@
 # Undone (The Sweater Container)
+Scenario: The API you developed for the ISS positional and velocity data (in homework 04) is a great start! But, there are many improvements we could make in order to make the API more useful. And, we can use some smart software engineering & design strategies to make our app more portable.
+
 The purpose of this project was to add onto homework04. In homework04 The purpose of the project was to read in the ISS data from an xml link. Using the link I had to find the data associated with the epochs. Then using that data with the epochs I created a path to a single epoch. Once the single epoch was returned I calculated the instantaneous velocity using the x_dot, y_dot, and z_dot value in the data set. In this homework there is 3 added routes with 2 of them using completley new methods "DELETE" and "POST." Within this project aswell I used defensive coding to bar the user from crashing the program using bad inputs. 
 
 ## How to Access the Data Used for the Flask App
