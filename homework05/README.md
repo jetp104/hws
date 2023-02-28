@@ -28,16 +28,16 @@ Dockerfile: A text file the contains everything needed to run the iss_tracker Do
 ## Instructions 
 To use the existing docker image use the commands in this order: 
 ```
-docker pull jetp104/iss_tracker:1.0
+docker pull jetp104/iss_tracker:hw05
 ```
 ```
-docker run jetp104/iss_tracker:1.0
+docker run jetp104/iss_tracker:hw05
 ```
 Make sure you are in the same repository as the iss_tracker.py file when you pull from docker
 
 To build a new image from the docker file use the command: 
 ```
-docker build -t <your_username>/iss_tracker:1.0 .
+docker build -t <your_username>/iss_tracker:hw05 .
 ```
 You will know the docker image sucessfuly built if you use the command: 
 ```
