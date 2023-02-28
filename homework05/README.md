@@ -57,12 +57,12 @@ If the image is built properly your terminal will end up looking like this once 
 
 To Curl these commands use: 
 ```
-curl localhost:5000
+curl 172.17.0.2:5000
 ```
 The routes can be run using these commands: 
 
  ```
-  curl localhost:5000/
+  curl 172.17.0.2:5000/
  ```
  which will output like this: 
  ![image](https://user-images.githubusercontent.com/122917623/221445650-0affeeec-cc4b-45da-b0fd-a471022ffa03.png)
@@ -70,7 +70,7 @@ The routes can be run using these commands:
   Interpretation: The list of all the data inside the xml file. 
  
   ```
-  curl localhost:5000/epochs
+  curl 172.17.0.2:5000/epochs
   ```
  
   which will output like this: 
@@ -79,7 +79,7 @@ The routes can be run using these commands:
   
   Interpretation: The list of all the epoch id's 
   ```
-  curl localhost:5000/epochs/"2023-048T18:40:00.000Z"
+  curl 172.17.0.2:5000/epochs/"2023-048T18:40:00.000Z"
   ``` 
   
   which will output like this: 
@@ -89,7 +89,7 @@ The routes can be run using these commands:
 
   Interpretation: The data associated with the specific epoch id
   ```
-  curl localhost:5000/epochs/"2023-048T18:40:00.000Z"/speed
+  curl 172.17.0.2:5000/epochs/"2023-048T18:40:00.000Z"/speed
   ``` 
   
   which will output like this: 
@@ -98,7 +98,7 @@ The routes can be run using these commands:
 
   Interpretation: The speed of the specific epoch id 
   ```
-  curl localhost:5000/keys
+  curl 172.17.0.2:5000/keys
   ```
   
   which will output like this: 
@@ -112,18 +112,18 @@ The routes can be run using these commands:
   the first command is for /delete-data which will produce a string that says "Deleted" 
   
   ```
-   curl -X DELETE localhost:5000/delete-data
+   curl -X DELETE 172.17.0.2:5000/delete-data
   ```
   
   the next command is for /post-data which will produce a string that says "data posted" 
   ```
-  curl -X POST localhost:5000/post-data
+  curl -X POST 172.17.0.2:5000/post-data
   ```
   
   ### Query Paramaters 
   The /epochs route has 2 query paramaters associated with it. The offset parameter (chooses a starting point for the epochs) and the limit parameter (limits the        amount of epochs that show up in the list. An example of this command would be: 
   ```
-  curl 'localhost:5000/epochs?limit=10&offset=500'
+  curl '172.17.0.2:5000/epochs?limit=10&offset=500'
   ```
   This command will display 10 epochs starting from epoch number 500. 
   
