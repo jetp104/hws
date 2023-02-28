@@ -48,12 +48,14 @@ docker images
 
 and it shows this 
 
-![image](https://user-images.githubusercontent.com/122917623/221445327-b1568523-fb31-4b27-a99a-3021088d1ba6.png)
+![image](https://user-images.githubusercontent.com/122917623/221747828-74edd1c9-4b95-464e-aaf6-56f6478eca0d.png)
+
 
 ## Running Flask 
 If the image is built properly your terminal will end up looking like this once you do the docker run command: 
 
-![image](https://user-images.githubusercontent.com/122917623/221445496-6b4d4ded-8c43-4e4e-81de-6d2f2b348baf.png)
+![image](https://user-images.githubusercontent.com/122917623/221747963-df082893-39d4-4079-9e07-4e5e474cacc0.png)
+
 
 To Curl these commands use: 
 ```
