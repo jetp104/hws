@@ -1,4 +1,4 @@
-# Say It Ain’t Genes (Homework06)
+# Containerizing Redis (Say It Ain’t Genes / Homework06)
 Scenario: We are going to turn our attention to a brand new dataset. The Human Genome Organization (HUGO) is a non-profit which oversees the HUGO Gene Nomenclature Committee (HGNC). The HGNC “approves a unique and meaningful name for every gene”. For this homework, we will download the complete set of HGNC data and inject it into a Redis database through a Flask interface.
 
 The purpose of this project is to get the HGNC dataset into a redis database and then launch both the containerized the flask application with the redis database by using a docker compose file. 
