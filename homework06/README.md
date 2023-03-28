@@ -32,6 +32,10 @@ docker pull jetp104/gene_api:hw06
 ```
 
 This will pull the image from online from Docker Hub 
+If ran correctly it will soemthing like this if you try to pull again. 
+
+![image](https://user-images.githubusercontent.com/122917623/228094437-9683446f-ef14-4972-b57c-1175570a56d6.png)
+
 
 2. Set up the redis data base with the command
 
@@ -45,6 +49,11 @@ An example of this command is
 docker run -d -p 6379:6379 -v $(pwd)/data:/data:rw redis:7 --save 1 1
 ```
 
+if ran correctly it will look like this
+
+![image](https://user-images.githubusercontent.com/122917623/228094553-f6bbc614-8963-49b4-b240-a7d83d91ae25.png)
+
+
 This will create a redis image and map the ports of 6379 from the container to the port 6379 of the user's host. 
 
 Once redis is up and running you can use the command 
@@ -52,6 +61,9 @@ Once redis is up and running you can use the command
 ```
 docker run -it --rm -p 5000:5000 jetp104/gene_api:hw06
 ```
+if ran correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228094690-cbb96faf-4a3e-4205-8f59-dee88f7b16f6.png)
 
 This will open the flask app and redis database at the same time. 
 
@@ -71,6 +83,10 @@ mkdir data
 ```
 docker-compose up
 ```
+if done correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228094789-feb16b10-6f2b-472e-9c81-23d845bd39ce.png)
+
 
 This will create both the redis container and the flask app and launch both of them simaltaneously 
 
@@ -79,6 +95,11 @@ To close the cointainers use the command
 ```
 docker-compose down
 ```
+
+if done correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228095019-5808bf0f-3c54-43c3-bd5f-d438ddc876d6.png)
+
 
 ## Instructions to build a new docker image  
 
@@ -102,6 +123,10 @@ An example of this command is
 ```
 docker build -t jetp104/gene_api:hw06 .
 ```
+
+if done correctly it will look something like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228095471-463eec50-8b43-4563-a1a8-e1d7d3fe48ee.png)
 
 ## Flask routes
 |Route|Method|What they do| 
@@ -128,4 +153,56 @@ curl -X POST localhost:5000/ROUTE
 curl -X DELETE localhost:5000/ROUTE
 ```
 
+### Sample outputs of each route
+
+```
+curl -X POST localhost:5000/data
+```
+
+if done correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/228095814-49f4cebe-8417-4f5d-8406-dfdc440f76f4.png)
+
+Interpreation: The data has succesfully been posted into a redis database
+
+```
+curl localhost:5000/data
+```
+
+if done correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/228096501-83a2284a-3a1f-47c9-acfb-62a24380499b.png)
+
+
+Interpretation: This is all the data that was included within the HGNC data set
+
+```
+curl -X DELETE localhost:5000/data
+```
+
+if done correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/228096569-e46f1ab8-3b4b-46dc-b6fb-538135302696.png)
+
+
+Interpretation: The data that was stored in the redis database was sucessfully deleted
+
+```
+curl localhost:5000/genes
+```
+
+if done correctky the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/228096819-35cd69c5-8273-4ae3-9280-ace843cc97cd.png)
+
+Interpretation: This is a Json list of all the HGNC ids associated inside the data set
+
+```
+curl localhost:5000/genes/"HGNC:24523"
+```
+If done correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/228096961-e98ba66c-8159-42ae-aad8-ef4ef7d0ef51.png)
+
+Interpretation: This return a dictionary of all the values associated with the single HGNC id specified by the user
 
