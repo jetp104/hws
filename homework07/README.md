@@ -1,7 +1,7 @@
 # Working With Kubernetes (In The Kubernetes / Homework07)
 Scenario: The simple app (Flask API + Redis DB) you built in Homework 06 needs a little bit of stability and exposure to the rest of the world. For this homework, we will write the necessary configurations to deploy the app onto the class Kubernetes cluster.
 
-The purpose of this project is to be able to run the hgnc data set in the last homework within a kubernetes cluster and in docker by creating yaml files for the kuberenetes and changing the host in the gene_api script. 
+The purpose of this project is to be able to run the hgnc data set in the last homework within a kubernetes cluster and in docker by creating yaml files for the kuberenetes and changing the host in the gene_api script. The host is changed to find the current host IP it is on rather than hard coding it in.  
 
 ## Data used for the App 
 The data used for this application was supplied by The Hugo Gene Nomenclature Committee (HGNC) which is overseen by The Human Genome Organization (HUGO). The data can be found using this link https://www.genenames.org/download/archive/ to their website. Once at the website scroll down and choose the Current JSON format hgnc_complete_set file.  
