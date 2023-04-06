@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jetp104-test-redis-pvc
+  name: jetp104-test-data
   labels:
     username: jetp104
     env: test
