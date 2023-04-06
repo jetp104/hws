@@ -2,7 +2,7 @@ from flask import Flask, request
 import requests
 import redis
 import json 
-
+import os 
 
 app = Flask(__name__)
 
@@ -19,8 +19,8 @@ def get_redis_client():
         returns a redis alias for use for docker files 
 
     """
-
-    return redis.Redis(host='jetp104-test-redis-service', port=6379, db=0, decode_responses=True)
+    redis_host = os.environ.get('REDIS_HOST', 'redis_db')
+    return redis.Redis(host= redis_host, port=6379, db=0, decode_responses=True)
 rd = get_redis_client()
 
 

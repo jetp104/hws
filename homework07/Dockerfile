@@ -1,5 +1,7 @@
 From python:3.8.10
 
+ENV REDIS_HOST redis-db  
+
 RUN pip install Flask==2.2.2
 RUN pip3 install requests==2.22.0
 RUN pip3 install redis==4.5.1
