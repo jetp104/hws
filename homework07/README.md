@@ -60,14 +60,14 @@ you must then push your image by using the command
 
 `docker push <dockerhubusername>/<code>:<version>`
 
-and then once the image is pushed to docker hub go into the file `jept104-test-flask-deployment.yml` and change line 24 for to the image that you would want to use. If you would like to use the exisiting image leave the files as is and go to the using `Using k8s` section
+and then once the image is pushed to docker hub go into the file `jept104-test-flask-deployment.yml` and change line 24 for to the image that you would want to use. If you would like to use the exisiting image leave the files as is and go to the `Using k8s` section
 
 ### Using K8s 
 To use the k8s use the command 
 
 `kubectl get service` 
 
-This should look like this and copy the cluster IP of the `jetp104-test-flask-deployment` service
+This should look like this and copy the cluster IP of the `jetp104-test-flask-service`
 
 ![image](https://user-images.githubusercontent.com/122917623/230490993-dcfbc653-c2a8-4ecd-8b4f-9121c32e3c0d.png)
 
@@ -81,7 +81,7 @@ To curl in this shell use the command
 
 `curl <Cluseter IP>:5000/<route>`
 
-The routes can be found below as well as the commands. 
+The routes can be found below as well as the commands. This should be all you need to run kuberenetes
 
 ## Instructions to run the app using the exisiting image on Docker Hub
 
