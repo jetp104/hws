@@ -1,0 +1,33 @@
+---
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: jetp104-test-flask-deployment
+   labels:
+     username: jetp104
+     env: test
+ spec:
+   replicas: 2
+   selector:
+     matchLabels:
+       app: jetp104-test-flask
+   template:
+     metadata:
+       labels:
+         app: jetp104-test-flask
+         username: jetp104
+         env: test
+     spec:
+       containers:
+         - name: jetp104-flask
+           image: jetp104/gene_api:hw07
+           env:
+           - name: REDIS_HOST
+             value: "gene_api.py"
+           volumeMounts:
+           - name: jetp104-test-data
+             mountPath: "/data"
+       volumes:
+       - name: jetp104-test-data
+         persistentVolumeClaim:
+           claimName: jetp104-test-data
