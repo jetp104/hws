@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jetp104-test-flask-service
+spec:
+  type: ClusterIP
+  selector:
+    app: jetp104-test-flask
+  ports:
+  - name: jetp104-test-flask
+    port: 5000
+    targetPort: 5000

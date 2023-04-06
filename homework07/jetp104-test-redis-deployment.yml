@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jetp104-test-redis-deployment
+  labels:
+    app: jetp104-test-redis
+    username: jetp104
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jetp104-test-redis
+      username: jetp104
+      env: test
+  template:
+    metadata:
+      labels:
+        app: jetp104-test-redis
+        username: jetp104
+        env: test
+    spec:
+      containers:
+        - name: jetp104-test-redis
+          imagePullPolicy: Always
+          image: redis:7
+          ports:
+          - name: http
+            containerPort: 6379
+          volumeMounts:
+          - name: jetp104-test-redis-pvc
+            mountPath: "/data"
+      volumes:
+       - name: jetp104-test-redis-pvc
+         persistentVolumeClaim:
+           claimName: jetp104-test-redis-pvc

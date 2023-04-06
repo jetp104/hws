@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jetp104-test-redis-pvc
+  labels:
+    username: jetp104
+    env: test
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: cinder-csi
+  resources:
+    requests:
+      storage: 1Gi
