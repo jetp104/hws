@@ -9,7 +9,7 @@ services:
                 volumes:
                    - ./data:/data
                 user: "1000:1000"
-                command: redis-server 
+                command: redis-server   
         flask-app:
                 build:
                         context: ./
