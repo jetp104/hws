@@ -73,6 +73,8 @@ This should look like this and copy the cluster IP of the `jetp104-test-flask-se
 
 ![image](https://user-images.githubusercontent.com/122917623/230490993-dcfbc653-c2a8-4ecd-8b4f-9121c32e3c0d.png)
 
+Then use the command 
+
 `kubectl exec -it <dev-python-pod-name> -- /bin/bash`
 
 this will lead you to a shell that looks like this 
