@@ -51,6 +51,8 @@ command you should see this
 
  
 ### If you want to build your own docker image 
+It is important to note that for the Flask container to get deployed to kuberenets, it must come from Docker Hub. In this case the default image used "jetp104/gene_api:hw07" is pulled from docker hub and can be found here -  https://hub.docker.com/repository/docker/jetp104/gene_api/general
+
 
 To build your own image and use it for the k8s you must use the command 
 
