@@ -1,7 +1,7 @@
-# Containerizing Redis (Say It Ain’t Genes / Homework06)
-Scenario: We are going to turn our attention to a brand new dataset. The Human Genome Organization (HUGO) is a non-profit which oversees the HUGO Gene Nomenclature Committee (HGNC). The HGNC “approves a unique and meaningful name for every gene”. For this homework, we will download the complete set of HGNC data and inject it into a Redis database through a Flask interface.
+# Working With Kubernetes (In The Kubernetes / Homework07)
+Scenario: The simple app (Flask API + Redis DB) you built in Homework 06 needs a little bit of stability and exposure to the rest of the world. For this homework, we will write the necessary configurations to deploy the app onto the class Kubernetes cluster.
 
-The purpose of this project is to get the HGNC dataset into a redis database and then launch both the containerized the flask application with the redis database by using a docker compose file. 
+The purpose of this project is to be able to run the hgnc data set in the last homework within a kubernetes cluster and in docker by creating yaml files for the kuberenetes and changing the host in the gene_api script. 
 
 ## Data used for the App 
 The data used for this application was supplied by The Hugo Gene Nomenclature Committee (HGNC) which is overseen by The Human Genome Organization (HUGO). The data can be found using this link https://www.genenames.org/download/archive/ to their website. Once at the website scroll down and choose the Current JSON format hgnc_complete_set file.  
@@ -13,6 +13,36 @@ The data used for this application was supplied by The Hugo Gene Nomenclature Co
 `Dockerfile`: This file containerzies the `gene_api.py` script. The image created by the dockerfile contains the same version of python used to cretae the script and other dependencies such as versions of: `redis`, `requests`, and `Flask`
 
 `docker-compose.yaml`: This file is a compose file to automate the devlopment of the app. It configures the build image with the specified tag and binds it to the appropriate ports from the container to the host. This file also launchs redis along with containerized flask app. 
+
+`jetp104-test-redis-pvc.yml` This file creates the depolyment of a persistent volume claim that's used by the upcoming redis pods. 
+
+`jetp104-test-redis-deployment` The file deploys all the redis pods
+
+`jetp104-test-redis-service` This file deploys both the kubernetes and redis services 
+
+`jetp104-test-flask-deployment` This file deploys flask kubernetes pods (2 pods in our case) 
+
+`jetp104-test-flask-service` This file deploys ths flask and kubernetes service
+
+## Instructions to run these files on kubernetes 
+
+To start deploying the all software to make it work properly use these commands in this order
+
+```
+kubectl apply -f jetp104-test-pvc.yml
+kubectl apply -f jetp104-test-redis-deployment.yml
+kubectl apply -f jetp104-test-redis-service.yml
+kubectl apply -f jetp104-test-flask-deployment
+kubectl apply -f jetp104-test-flask-service
+```
+This will create the Persistant Volume claim, deploy the kubernetes pods, and will deploy both the redis and flask services. Look below for the messages for each command 
+
+`kubectl apply -f jetp104-test-pvc.yml` 
+
+![image](https://user-images.githubusercontent.com/122917623/230467761-058b650b-02b6-40ed-9ea5-544d1486d9b7.png)
+
+
+
 
 ## Instructions to run the app using the exisiting image on Docker Hub
 
