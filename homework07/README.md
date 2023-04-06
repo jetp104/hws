@@ -43,12 +43,14 @@ command this is what you should see
 
 ![image](https://user-images.githubusercontent.com/122917623/230490868-f19f9f0f-b025-4e69-89ab-21ffab9aa0e3.png)
 
+`kubectl get service` 
+
 command you should see this 
 
 ![image](https://user-images.githubusercontent.com/122917623/230490993-dcfbc653-c2a8-4ecd-8b4f-9121c32e3c0d.png)
 
  
-## If you want to build your own docker image 
+### If you want to build your own docker image 
 
 To build your own image and use it for the k8s you must use the command 
 
@@ -58,7 +60,7 @@ you must then push your image by using the command
 
 `docker push <dockerhubusername>/<code>:<version>`
 
-and then once the image is pushed to docker hub go into the file `jept104-test-flask-deployment.yml` and change line 24 for to the image that you would want to use.
+and then once the image is pushed to docker hub go into the file `jept104-test-flask-deployment.yml` and change line 24 for to the image that you would want to use. If you would like to do use the existing image go then leave the files as is 
 
 
 ## Instructions to run the app using the exisiting image on Docker Hub
