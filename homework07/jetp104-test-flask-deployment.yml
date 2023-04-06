@@ -20,10 +20,11 @@
      spec:
        containers:
          - name: jetp104-flask
+           imagePullPolicy: Always
            image: jetp104/gene_api:hw07
            env:
            - name: REDIS_HOST
-             value: "gene_api.py"
+             value: jetp104-test-redis-service
            volumeMounts:
            - name: jetp104-test-data
              mountPath: "/data"

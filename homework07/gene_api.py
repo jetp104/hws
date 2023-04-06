@@ -19,7 +19,7 @@ def get_redis_client():
         returns a redis alias for use for docker files 
 
     """
-    redis_host = os.environ.get('REDIS_HOST', 'redis_db')
+    redis_host = os.environ.get('REDIS_HOST')
     return redis.Redis(host= redis_host, port=6379, db=0, decode_responses=True)
 rd = get_redis_client()
 
