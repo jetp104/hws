@@ -225,7 +225,34 @@ if done correctly it will look something like this
 ## Flask routes
 |Route|Method|What they do| 
 |-----|------|------------|
+|/data|POST|Put data into Redis|
+|/data|GET|Return all data from Redis|
+|/data|DELETE|Delete data in Redis| 
+|/asteroids|GET|Return a json-formatted list of all asteroids|
+|/asteroids/<asteroid_name>|GET|Return all data associated with specifc asteroid name| 
 
+## Running the app
+To run the app you will use 1 of three commands that will all be outlined with example inputs here.
+
+1. 
+```
+curl localhost:5000/ROUTE
+```
+2. 
+```
+curl -X POST localhost:5000/ROUTE
+```
+3.
+```
+curl -X DELETE localhost:5000/ROUTE
+```
+
+### Sample outputs of each route
+
+```
+curl -X POST localhost:5000/data
+```
+if done correctly the output will be
 
 
 
