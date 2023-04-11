@@ -88,7 +88,26 @@ and then once the image is pushed to docker hub go into the file `asteroid-test-
 ### Using K8s 
 To use the k8s use the command 
 
-`kubectl get service
+`kubectl get service`
+
+This should look like this and copy the cluster IP of the `asteroid-test-flask-service`
+
+![image](https://user-images.githubusercontent.com/122917623/231304974-bfca8fb2-e45d-4749-b1dc-2d466da68f84.png)
+
+Then use the command 
+
+`kubectl exec -it <dev-python-pod-name> -- /bin/bash`
+
+this will lead you to a shell that looks like this 
+
+![image](https://user-images.githubusercontent.com/122917623/230494158-b19b4fbf-3563-4851-8da4-8a169fb3c924.png)
+
+To curl in this shell use the command 
+
+`curl <Cluseter IP>:5000/<route>`
+
+The routes can be found below as well as the commands. This should be all you need to run kuberenetes
+
 
 
 
