@@ -108,6 +108,131 @@ To curl in this shell use the command
 
 The routes can be found below as well as the commands. This should be all you need to run kuberenetes
 
+## Instructions to run the app using the exisiting image on Docker Hub
+
+### Important: Do Before Use
+Before you do this method create an empty director named "data", so the user has the ability to interact with the flask application.
+
+To make a director called data use this command
+
+```
+mkdir data
+```
+
+1. To pull and use the exisitng image from Docker Hub
+
+```
+docker pull jetp104/asteroid_data:hw08
+```
+
+This will pull the image from online from Docker Hub 
+If ran correctly it will soemthing like this if you try to pull again. 
+
+![image](https://user-images.githubusercontent.com/122917623/231307124-1fbaadc4-6b84-4d00-987f-edc86580d731.png)
+
+2. Set up the redis data base with the command
+
+```
+docker run -d -p 6379:6379 -v </path/on/host>:/data redis:7 --save 1 1
+```
+
+An example of this command is 
+
+```
+docker run -d -p 6379:6379 -v $(pwd)/data:/data:rw redis:7 --save 1 1
+```
+
+if ran correctly it will look like this
+
+![image](https://user-images.githubusercontent.com/122917623/228094553-f6bbc614-8963-49b4-b240-a7d83d91ae25.png)
+
+
+This will create a redis image and map the ports of 6379 from the container to the port 6379 of the user's host. 
+
+Once redis is up and running you can use the command 
+
+```
+docker run -it --rm -p 5000:5000 jetp104/asteroid_data:hw08
+```
+
+if ran correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228094690-cbb96faf-4a3e-4205-8f59-dee88f7b16f6.png)
+
+This will open the flask app and redis database at the same time. 
+
+## Instructions to run the app and redis using docker-compose 
+
+### Important: Do Before Use
+Before you do this method create an empty director named "data", so the user has the ability to interact with the flask application.
+
+To make a director called data use this command
+
+```
+mkdir data
+```
+
+1. With all the files inside the same director use the command 
+
+```
+docker-compose up
+```
+if done correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228094789-feb16b10-6f2b-472e-9c81-23d845bd39ce.png)
+
+
+This will create both the redis container and the flask app and launch both of them simaltaneously 
+
+To close the cointainers use the command 
+
+```
+docker-compose down
+```
+
+if done correctly it will look like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228095019-5808bf0f-3c54-43c3-bd5f-d438ddc876d6.png)
+
+
+## Instructions to build a new docker image  
+
+### Important: Do Before Use
+Before you do this method create an empty director named "data", so the user has the ability to interact with the flask application.
+
+To make a director called data use this command
+
+```
+mkdir data
+```
+
+To build a new image from the exisiting docker image, use the command 
+
+```
+docker build -t <dockerhubusername>/<code>:<version> .
+```
+
+An example of this command is 
+
+```
+docker build -t jetp104/asteroid_data:hw08 .
+```
+
+if done correctly it will look something like this 
+
+![image](https://user-images.githubusercontent.com/122917623/228095471-463eec50-8b43-4563-a1a8-e1d7d3fe48ee.png)
+
+## Flask routes
+|Route|Method|What they do| 
+|-----|------|------------|
+
+
+
+
+
+
+
+
 
 
 
