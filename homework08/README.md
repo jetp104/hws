@@ -280,10 +280,6 @@ curl localhost:5000/data
 Interpretation: The value of each key associated with the asteroid data (shows the entire dataset) 
 
 ```
-curl localhost:5000/data
-```
-
-```
 curl localhost:5000/asteroids
 ```
 
