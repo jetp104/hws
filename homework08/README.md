@@ -230,6 +230,11 @@ if done correctly it will look something like this
 |/data|DELETE|Delete data in Redis| 
 |/asteroids|GET|Return a json-formatted list of all asteroids|
 |/asteroids/<asteroid_name>|GET|Return all data associated with specifc asteroid name| 
+|/image|GET|return the image to the user, if present in the database.
+|/image|POST|read some portion of data out of the database (db=0), run some matplotlib code to create a simple plot of that data, then write the resulting plot back into the database (db=1).
+|/image|DELETE|delete the image from the database.
+
+
 
 ## Running the app
 To run the app you will use 1 of three commands that will all be outlined with example inputs here.
@@ -253,6 +258,71 @@ curl -X DELETE localhost:5000/ROUTE
 curl -X POST localhost:5000/data
 ```
 if done correctly the output will be
+
+![image](https://user-images.githubusercontent.com/122917623/231546161-16149e5d-1d29-4daf-b69c-a4db4491af42.png)
+
+Interpretation: The data has been posted to the redis database 
+
+```
+curl -X DELETE localhost:5000/data
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231546312-1d66b2f1-4ae2-4894-8864-3135977f6690.png)
+
+Interpretation: The data from the redis database was deleted. 
+
+```
+curl localhost:5000/data
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231546524-d968b560-0f25-44bd-84a5-c3d3ca7d96cf.png)
+
+Interpretation: The value of each key associated with the asteroid data (shows the entire dataset) 
+
+```
+curl localhost:5000/data
+```
+
+```
+curl localhost:5000/asteroids
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231546775-ecc28053-be63-4655-abd9-76c9925380d5.png)
+
+Interpretation: Returns a list of the name of all the asteroids in the dataset
+
+```
+curl localhost:5000/asteroids/"<asteroid_name>"
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231547101-88ce580a-a1ae-4e34-907b-de979715aceb.png)
+
+Interpreation: Returns all values associated with a specific asteroid in the data set 
+
+```
+curl -X POST localhost:5000/image 
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231547410-0336e32c-497a-4f5f-a894-7023dde2eadb.png)
+
+Interpretation: An image was created a posted to a second redis database 
+
+```
+curl -X DELETE localhost:5000/image 
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231547736-54b4e02b-e0cf-4c84-801f-9ffd3017b995.png)
+
+Interpreation: The graph was deleted out of the 2nd redis database 
+
+```
+curl localhost:5000/image --output <filename> 
+```
+
+![image](https://user-images.githubusercontent.com/122917623/231548281-da3bb8ab-82de-467c-9ba7-e3e661a8251a.png)
+
+Interpreatation: The image was outputted into bytes into the name of the file you gave it
+
 
 
 
