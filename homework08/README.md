@@ -1,14 +1,14 @@
-# Working With Kubernetes (In The Kubernetes / Homework07)
-Scenario: The simple app (Flask API + Redis DB) you built in Homework 06 needs a little bit of stability and exposure to the rest of the world. For this homework, we will write the necessary configurations to deploy the app onto the class Kubernetes cluster.
+# Creating plots and continuing Kubernetes (Holidapp / Homework08)
+Scenario: Your app (Flask API + Redis DB) has been deployed in Kubernetes, and now we are going to continue to build out some more features. First, we will write some code to dynamically assign the Redis client host IP. Second, we will add some functionality to write images to a Redis database and read images back out. 
 
-The purpose of this project is to be able to run the hgnc data set in the last homework within a kubernetes cluster and in docker by creating yaml files for the kuberenetes and changing the host in the gene_api script. The host is changed to find the current host IP it is on rather than hard coding it in.  
+The purpose of this project is to be able to run the hgnc data set in the last homework within a kubernetes cluster and in docker by creating yaml files for the kuberenetes and changing the host in the gene_api script. The host is changed to find the current host IP it is on rather than hard coding it in. We also want to create a plot with the hgnc data.  
 
 ## Data used for the App 
 The data used for this application was supplied by The Hugo Gene Nomenclature Committee (HGNC) which is overseen by The Human Genome Organization (HUGO). The data can be found using this link https://www.genenames.org/download/archive/ to their website. Once at the website scroll down and choose the Current JSON format hgnc_complete_set file.  
 
 ## Important files
 
-`gene_api.py`: This is the main script of this project. The gene_api script is a Flask app that has 5 routes that are described in the table below. This script puts the HGNC data into a Redis database so the user can interact with the data with the different routes and also uses defensive programming stratigies to make sure the script runs without breaking, giving an error message if something is amiss. 
+`gene_api.py`: This is the main script of this project. The gene_api script is a Flask app that has 8 routes that are described in the table below. This script puts the HGNC data into a Redis database so the user can interact with the data with the different routes and also uses defensive programming stratigies to make sure the script runs without breaking, giving an error message if something is amiss. 
 
 `Dockerfile`: This file containerzies the `gene_api.py` script. The image created by the dockerfile contains the same version of python used to cretae the script and other dependencies such as versions of: `redis`, `requests`, and `Flask`
 
@@ -209,7 +209,9 @@ if done correctly it will look something like this
 |/data|DELETE|Delete data in Redis| 
 |/genes|GET|Return json-formatted list of all hgnc_ids| 
 |/genes/<hgnc_id>|GET|Return all data assocciated with specified id| 
-
+|/image|GET|return the image to the user, if present in the database.|
+|/image|POST|read some portion of data out of the database (db=0), run some matplotlib code to create a simple plot of that data, then write the resulting plot back into the database (db=1).|
+|/image|DELETE|delete the image from the database.| 
 ## Running the app
 To run the app you will use 1 of three commands that will all be outlined with example inputs here.
 
@@ -279,3 +281,29 @@ If done correctly the output will be
 
 Interpretation: This return a dictionary of all the values associated with the single HGNC id specified by the user
 
+```
+curl localhost:5000/image --output <filename> 
+```
+If done correctly the output will be
+
+![image](https://user-images.githubusercontent.com/122917623/231886549-c70d7b64-6606-4588-93e9-c8560f796e6c.png)
+
+Interpreation: This will create a file that has the png image from the data in bytes form
+
+```
+curl -X POST localhost:5000/data
+```
+If one correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/231886323-afb93f18-9dec-4ae1-a2ab-0ed9e7e8f326.png)
+
+Interpretation: This will post the image into a seperate redis database
+
+```
+curl -X DELETE localhost:5000/data
+```
+If done correctly the output will be 
+
+![image](https://user-images.githubusercontent.com/122917623/231886685-cfc7dac3-6391-4cd2-bc81-dbdcb3b2bf21.png)
+
+Interpretation: The graph image was deleted from the redis database
