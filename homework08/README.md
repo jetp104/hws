@@ -291,7 +291,7 @@ If done correctly the output will be
 Interpreation: This will create a file that has the png image from the data in bytes form
 
 ```
-curl -X POST localhost:5000/data
+curl -X POST localhost:5000/image
 ```
 If one correctly the output will be 
 
@@ -300,7 +300,7 @@ If one correctly the output will be
 Interpretation: This will post the image into a seperate redis database
 
 ```
-curl -X DELETE localhost:5000/data
+curl -X DELETE localhost:5000/image
 ```
 If done correctly the output will be 
 
