@@ -25,6 +25,14 @@ The data used for this application was supplied by The Hugo Gene Nomenclature Co
 `jetp104-test-flask-service` This file deploys ths flask and kubernetes service
 
 ## Instructions to run these files on kubernetes 
+To start using the k8 files the user must first clone this repository uisng the command. 
+
+`git clone git@github.com:jetp104/hws/homework08.git`
+
+This should fully clone this repositroy 
+
+### Important info for IP's
+In both the 'docker-compose.yaml' and 'jetp104-test-flask-deployment' files there are enviormental variables. The way they are coded for the flask deployment as long as the redis service deployment is up and running you shouldn't have to change anything. With the docker compose file the enviorment variable is set to the redis-db which also means you wouldn't have to change anything. If you would like to change them to a specific IP address change line 27 in the deployment file and line 23 in the docker compose file. 
 
 To start deploying the all software to make it work properly use these commands in this order
 
